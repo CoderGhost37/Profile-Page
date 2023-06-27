@@ -2,7 +2,10 @@ import React from 'react';
 import { MdElectricBolt } from 'react-icons/md';
 import { VscBell } from 'react-icons/vsc';
 
+import { useProfile } from '@/context/ProfileContext';
+
 const NavMenu = () => {
+  const { profile } = useProfile();
   return (
     <nav className='flex items-center justify-between'>
       <div className='flex items-center'>
@@ -18,7 +21,7 @@ const NavMenu = () => {
       <div className='relative'>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src='/images/profile-img.jpg'
+          src={profile.profilePic}
           alt='profile image'
           className='h-9 w-9 rounded-full object-cover'
         />

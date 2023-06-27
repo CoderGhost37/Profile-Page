@@ -1,17 +1,14 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 
 import ButtonGroup from '@/components/ButtonGroup';
 import Input from '@/components/Input';
 
+import { useProfile } from '@/context/ProfileContext';
+
 const Socials = () => {
-  const [form, setForm] = React.useState({
-    githubUrl: '',
-    linkedinUrl: '',
-    facebookUrl: '',
-    instagramUrl: '',
-    dribbbleUrl: '',
-    behanceUrl: '',
-  });
+  const { socials, updateSocials } = useProfile();
+  const [form, setForm] = React.useState(socials);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -22,18 +19,12 @@ const Socials = () => {
   };
 
   const handleCancel = () => {
-    setForm({
-      githubUrl: '',
-      linkedinUrl: '',
-      facebookUrl: '',
-      instagramUrl: '',
-      dribbbleUrl: '',
-      behanceUrl: '',
-    });
+    setForm(socials);
   };
 
   const handleSave = () => {
-    //
+    updateSocials(form);
+    toast.success('Socials updated successfully');
   };
 
   return (
