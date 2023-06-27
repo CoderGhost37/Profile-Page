@@ -7,7 +7,8 @@ import Skill from '@/components/Profile/Resume/Skill';
 import { resumeData } from '@/constant/data';
 
 const Resume = () => {
-  const { skills, languages, about, education, interests, workExperience } = resumeData;
+  const { skills, languages, about, education, interests, workExperience } =
+    resumeData;
   const [readMore, setReadMore] = React.useState(false);
   return (
     <section className='mt-12'>

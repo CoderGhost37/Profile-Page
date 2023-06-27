@@ -23,7 +23,6 @@ const technologies = [
   'NodeJs',
 ];
 
-
 const ProfileCard = ({ view }: { view: string }) => {
   return (
     <div className='mt-10 rounded-lg border border-solid pb-10'>
@@ -66,9 +65,7 @@ const ProfileCard = ({ view }: { view: string }) => {
           </p>
           <div className='mt-2 flex items-center'>
             <IoLocationOutline className='mr-2 text-base text-gray-500 sm:text-lg' />
-            <p className='text-sm text-gray-500 sm:text-lg'>
-              Mumbai, India
-            </p>
+            <p className='text-sm text-gray-500 sm:text-lg'>Mumbai, India</p>
           </div>
           <div className='mt-6 flex w-64 flex-wrap items-center justify-between gap-2 sm:w-80 md:w-96 md:gap-4'>
             <p className='text-sm sm:text-lg'>
