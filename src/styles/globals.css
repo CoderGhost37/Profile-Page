@@ -2,6 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
+.hexagon {
+  width: 30px;
+  height: 16px;
+  background-color: #000000;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 8px solid #000000;
+}
+
+.hexagon:after {
+  top: 100%;
+  width: 0;
+  border-top: 8px solid #000000;
+}
+
+.hexagon-small {
+  width: 18px;
+  height: 10px;
+  background-color: #000000;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hexagon-small:before,
+.hexagon-small:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+}
+
+.hexagon-small:before {
+  bottom: 100%;
+  border-bottom: 5px solid #000000;
+}
+
+.hexagon-small:after {
+  top: 100%;
+  width: 0;
+  border-top: 5px solid #000000;
+}
+
+.gradient {
+  background: #00d2ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #3a7bd5,
+    #00d2ff
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #3a7bd5,
+    #00d2ff
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 :root {
   /* #region  /**=========== Primary Color =========== */
   /* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
