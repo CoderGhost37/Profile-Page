@@ -1,22 +1,16 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 import { BiChevronDown } from 'react-icons/bi';
 
 import ButtonGroup from '@/components/ButtonGroup';
 import Input from '@/components/Input';
 import ToggleInput from '@/components/ToggleInput';
 
+import { useProfile } from '@/context/ProfileContext';
+
 const Profile = () => {
-  const [form, setForm] = React.useState({
-    profilePic: '/images/user.png',
-    name: '',
-    bio: '',
-    location: '',
-    dob: '',
-    gender: '',
-    followersFollowingVisible: false,
-    xpVisible: false,
-    badgesVisible: true,
-  });
+  const { profile, updateProfile } = useProfile();
+  const [form, setForm] = React.useState(profile);
   const [profilePicUrl, setProfilePicUrl] = React.useState('');
   const [openProfilePicInput, setOpenProfilePicInput] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
@@ -36,21 +30,12 @@ const Profile = () => {
   };
 
   const handleCancel = () => {
-    setForm({
-      profilePic: '/images/user.png',
-      name: '',
-      bio: '',
-      location: '',
-      dob: '',
-      gender: '',
-      followersFollowingVisible: false,
-      xpVisible: false,
-      badgesVisible: true,
-    });
+    setForm(profile);
   };
 
   const handleSave = () => {
-    //
+    updateProfile(form);
+    toast.success('Profile updated successfully');
   };
 
   return (
@@ -59,8 +44,8 @@ const Profile = () => {
         <div className='flex w-full items-center justify-start'>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src='/images/profile-img.jpg'
-            alt='profile picture'
+            src={form.profilePic}
+            alt={profile.name}
             className='h-20 w-20 rounded-full object-cover sm:h-28 sm:w-28'
           />
           <ButtonGroup

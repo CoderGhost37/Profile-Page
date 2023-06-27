@@ -5,10 +5,12 @@ import Card from '@/components/Profile/Resume/Card';
 import Skill from '@/components/Profile/Resume/Skill';
 
 import { resumeData } from '@/constant/data';
+import { useProfile } from '@/context/ProfileContext';
 
 const Resume = () => {
-  const { skills, languages, about, education, interests, workExperience } =
-    resumeData;
+  const { resume } = useProfile();
+  const { about, education, interests, workExp } = resume;
+  const { skills, languages } = resumeData;
   const [readMore, setReadMore] = React.useState(false);
   return (
     <section className='mt-12'>
@@ -30,7 +32,7 @@ const Resume = () => {
       <div className='mt-12'>
         <h2 className='text-center'>Work experience</h2>
         <div>
-          {workExperience.map((item, index) => (
+          {workExp.map((item, index) => (
             <Card key={index} {...item} />
           ))}
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-hot-toast';
 import { AiOutlinePlus } from 'react-icons/ai';
 
 import ButtonGroup from '@/components/ButtonGroup';
@@ -6,16 +7,13 @@ import Card from '@/components/EditProfile/Card';
 import MultiFieldInput from '@/components/MultiFieldInput';
 import MultiTagInput from '@/components/MultiTagInput';
 
-import { Education, resumeData, WorkExperience } from '@/constant/data';
+import { Education, WorkExperience } from '@/constant/data';
+import { useProfile } from '@/context/ProfileContext';
 
 const Resume = () => {
-  const [form, setForm] = React.useState({
-    about: resumeData.about,
-    education: resumeData.education,
-    workExp: resumeData.workExperience,
-    interests: resumeData.interests,
-  });
-  const [tags, setTags] = React.useState<string[]>(resumeData.interests);
+  const { resume, updateResume } = useProfile();
+  const [form, setForm] = React.useState(resume);
+  const [tags, setTags] = React.useState<string[]>(resume.interests);
   const [addEducation, setAddEducation] = React.useState(false);
   const [addWorkExperience, setAddWorkExperience] = React.useState(false);
 
@@ -38,30 +36,23 @@ const Resume = () => {
   };
 
   const onSaveEducation = (fields: Education) => {
-    if (!fields)
-      setForm({
-        ...form,
-        education: [fields, ...form.education],
-      });
+    setForm({
+      ...form,
+      education: [fields, ...form.education],
+    });
     setAddEducation(false);
   };
 
   const onSaveWorkExp = (fields: WorkExperience) => {
-    if (!fields)
-      setForm({
-        ...form,
-        workExp: [fields, ...form.workExp],
-      });
+    setForm({
+      ...form,
+      workExp: [fields, ...form.workExp],
+    });
     setAddWorkExperience(false);
   };
 
   const handleCancel = () => {
-    setForm({
-      about: resumeData.about,
-      education: resumeData.education,
-      workExp: resumeData.workExperience,
-      interests: resumeData.interests,
-    });
+    setForm(resume);
   };
 
   const handleSave = () => {
@@ -69,6 +60,8 @@ const Resume = () => {
       ...form,
       interests: tags,
     });
+    updateResume(form);
+    toast.success('Resume updated successfully');
   };
 
   return (
