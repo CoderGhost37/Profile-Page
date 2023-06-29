@@ -1,122 +1,34 @@
-# Next.js + Tailwind CSS + TypeScript Starter and Boilerplate
+# Project README
 
-<div align="center">
-  <h2>🔋 ts-nextjs-tailwind-starter</h2>
-  <p>Next.js + Tailwind CSS + TypeScript starter packed with useful development features.</p>
-  <p>Made by <a href="https://theodorusclarence.com">Theodorus Clarence</a></p>
+This repository contains the source code for the profile page app developed using React, TypeScript, and TailwindCSS within a Next.JS project.
 
-[![GitHub Repo stars](https://img.shields.io/github/stars/theodorusclarence/ts-nextjs-tailwind-starter)](https://github.com/theodorusclarence/ts-nextjs-tailwind-starter/stargazers)
-[![Depfu](https://badges.depfu.com/badges/fc6e730632ab9dacaf7df478a08684a7/overview.svg)](https://depfu.com/github/theodorusclarence/ts-nextjs-tailwind-starter?project_id=30160)
-[![Last Update](https://img.shields.io/badge/deps%20update-every%20sunday-blue.svg)](https://shields.io/)
+## Description
 
-</div>
+The profile page app allows users to create and customize their profile pages. It consists of a profile page and an edit profile form. Users can edit various sections of their profile page through the edit profile form, and they have the option to set the visibility settings for each section, making it either private or public.
+
+One of the key features of the app is that the edited content is preserved even across page reloads. This is achieved by storing the data in the browser's local storage.
+
+The app focuses on providing a great frontend and UI/UX experience. It is designed to be easily maintainable and extendable. Best practices such as using Prettier and eslint for code formatting and adhering to recommended DX (Developer Experience) tools have been followed.
 
 ## Features
 
-This repository is 🔋 battery packed with:
+### Edit Profile Form
 
-- ⚡️ Next.js 13
-- ⚛️ React 18
-- ✨ TypeScript
-- 💨 Tailwind CSS 3 — Configured with CSS Variables to extend the **primary** color
-- 💎 Pre-built Components — Components that will **automatically adapt** with your brand color, [check here for the demo](https://tsnext-tw.thcl.dev/components)
-- 🃏 Jest — Configured for unit testing
-- 📈 Absolute Import and Path Alias — Import components using `@/` prefix
-- 📏 ESLint — Find and fix problems in your code, also will **auto sort** your imports
-- 💖 Prettier — Format your code consistently
-- 🐶 Husky & Lint Staged — Run scripts on your staged files before they are committed
-- 🤖 Conventional Commit Lint — Make sure you & your teammates follow conventional commit
-- ⏰ Release Please — Generate your changelog by activating the `release-please` workflow
-- 👷 Github Actions — Lint your code on PR
-- 🚘 Automatic Branch and Issue Autolink — Branch will be automatically created on issue **assign**, and auto linked on PR
-- 🔥 Snippets — A collection of useful snippets
-- 👀 Default Open Graph — Awesome open graph generated using [og](https://github.com/theodorusclarence/og), fork it and deploy!
-- 🗺 Site Map — Automatically generate sitemap.xml
-- 📦 Expansion Pack — Easily install common libraries, additional components, and configs
+The edit profile form allows users to provide specific information such as a profile photo, name, bio, social links and other relevant details. It also collects portfolio-related information, including projects, featured playgrounds, certificates, stats, metrics, work experience, educational background, and more. Users have the freedom to include data as they see fit.
 
-See the 👉 [feature details and changelog](https://github.com/theodorusclarence/ts-nextjs-tailwind-starter/blob/main/CHANGELOG.md) 👈 for more.
+![App Screenshot](/public/images/edit-profile.png)
 
-You can also check all of the **details and demos** on my blog post:
+### Profile Page
 
-- [One-stop Starter to Maximize Efficiency on Next.js & Tailwind CSS Projects](https://theodorusclarence.com/blog/one-stop-starter)
+The profile page presents all the collected data in an organized manner. It includes the user's profile photo, name, bio, social links (if provided by the user), follower and following counts (if made public by the user), experience points (if made public by the user), projects, featured playgrounds, certificates, stats, metrics, work experience , education and more.
+
+![App Screenshot](/public/images/profile-page.png)
 
 ## Getting Started
 
-### 1. Clone this template using one of the three ways:
+To get started with the project, follow these steps:
 
-1. Use this repository as template
-
-   **Disclosure:** by using this repository as a template, there will be an attribution on your repository.
-
-   I'll appreciate if you do, so this template can be known by others too 😄
-
-   ![Use as template](https://user-images.githubusercontent.com/55318172/129183039-1a61e68d-dd90-4548-9489-7b3ccbb35810.png)
-
-2. Using `create-next-app`
-
-   ```bash
-   npx create-next-app -e https://github.com/theodorusclarence/ts-nextjs-tailwind-starter project-name
-   ```
-
-3. Using `degit`
-
-   ```bash
-   npx degit theodorusclarence/ts-nextjs-tailwind-starter YOUR_APP_NAME
-   ```
-
-4. Deploy to Vercel
-
-   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Ftheodorusclarence%2Fts-nextjs-tailwind-starter)
-
-### 2. Install dependencies
-
-It is encouraged to use **yarn** so the husky hooks can work properly.
-
-```bash
-yarn install
-```
-
-### 3. Run the development server
-
-You can start the server using this command:
-
-```bash
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. You can start editing the page by modifying `src/pages/index.tsx`.
-
-### 4. Change defaults
-
-There are some things you need to change including title, urls, favicons, etc.
-
-Find all comments with !STARTERCONF, then follow the guide.
-
-Don't forget to change the package name in package.json
-
-### 5. Commit Message Convention
-
-This starter is using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/), it is mandatory to use it to commit changes.
-
-## Projects using ts-nextjs-tailwind-starter
-
-<!--
-TEMPLATE
-- [sitename](https://sitelink.com) ([Source](https://github.com/githublink))
-- [sitename](https://sitelink.com)
--->
-
-- [theodorusclarence.com](https://theodorusclarence.com) ([Source](https://github.com/theodorusclarence/theodorusclarence.com))
-- [Notiolink](https://notiolink.thcl.dev/) ([Source](https://github.com/theodorusclarence/notiolink))
-
-Are you using this starter? Please add your page (and repo) to the end of the list via a [Pull Request](https://github.com/theodorusclarence/ts-nextjs-tailwind-starter/edit/main/README.md). 😃
-
-## Expansion Pack 📦
-
-This starter is now equipped with an [expansion pack](https://github.com/theodorusclarence/expansion-pack).
-
-You can easily add expansion such as React Hook Form + Components, Storybook, and more just using a single command line.
-
-https://user-images.githubusercontent.com/55318172/146631994-e1cac137-1664-4cfe-950b-a96decc1eaa6.mp4
-
-Check out the [expansion pack repository](https://github.com/theodorusclarence/expansion-pack) for the commands
+- Clone the repository: git clone https://github.com/CoderGhost37/Codedamn-Frontend-Assignment
+- Install dependencies: npm install
+- Start the development server: npm run dev
+- Open the app in your browser at http://localhost:3000
