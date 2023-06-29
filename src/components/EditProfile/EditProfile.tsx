@@ -8,10 +8,10 @@ import Socials from '@/components/EditProfile/Socials';
 const UpdateProfile = ({ active }: { active: string }) => {
   return (
     <section className='w-full'>
-      {active === 'Profile' && <Profile />}
-      {active === 'Socials' && <Socials />}
-      {active === 'Portfolio' && <Portfolio />}
-      {active === 'Resume' && <Resume />}
+      {active === 'profile' && <Profile />}
+      {active === 'socials' && <Socials />}
+      {active === 'portfolio' && <Portfolio />}
+      {active === 'resume' && <Resume />}
     </section>
   );
 };

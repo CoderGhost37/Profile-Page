@@ -12,10 +12,12 @@ const ToggleInput = ({ label, note, value, handleChange }: InputProps) => {
     <div className='mt-5 flex w-full items-center justify-between'>
       <div className=''>
         <label className='font-semibold'>{label}</label>
-        <p className='mt-1 text-sm font-medium text-gray-500'>{note}</p>
+        <p className='mt-1 text-xs font-medium text-gray-500 md:text-sm'>
+          {note}
+        </p>
       </div>
 
-      <label className='flex items-center'>
+      <label className='ml-4 flex items-center'>
         <div className='relative'>
           <input
             type='checkbox'

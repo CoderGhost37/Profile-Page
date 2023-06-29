@@ -38,6 +38,14 @@ const Resume = () => {
     desc: '',
   });
 
+  React.useEffect(() => {
+    setForm({
+      ...form,
+      interests: tags,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tags]);
+
   const onDeleteEducation = (index: number) => {
     const newEducation = [...form.education];
     newEducation.splice(index, 1);
@@ -196,6 +204,7 @@ const Resume = () => {
           classStyles='justify-end w-full mt-4'
           button1_text='Cancel'
           button2_text='Save changes'
+          button2_disabled={JSON.stringify(resume) === JSON.stringify(form)}
           button1_onClick={handleCancel}
           button2_onClick={handleSave}
         />

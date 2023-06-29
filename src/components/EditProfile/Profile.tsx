@@ -155,7 +155,7 @@ const Profile = () => {
         <p className='mt-2 text-gray-500'>
           Select which sections and content should show on your profile page.
         </p>
-        <div className='px-4'>
+        <div className='sm:px-4'>
           <ToggleInput
             label='Followers and following'
             note='Shows your followers and the users you follow on codedamn'
@@ -188,6 +188,7 @@ const Profile = () => {
       <ButtonGroup
         button1_text='Cancel'
         button2_text='Save changes'
+        button2_disabled={JSON.stringify(profile) === JSON.stringify(form)}
         button1_onClick={handleCancel}
         button2_onClick={handleSave}
         classStyles='mt-16 justify-end'

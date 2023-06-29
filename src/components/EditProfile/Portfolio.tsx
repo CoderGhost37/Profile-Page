@@ -29,7 +29,7 @@ const Portfolio = () => {
             See all
           </p>
         </div>
-        <div className='mt-5 grid grid-cols-1 gap-4 px-2 md:px-6 lg:grid-cols-2'>
+        <div className='mt-5 grid grid-cols-1 gap-4 md:px-6 lg:grid-cols-2'>
           {playgrounds.map((playground, index) => (
             <div
               key={index}
@@ -51,7 +51,7 @@ const Portfolio = () => {
           See all
         </p>
       </div>
-      <div className='mt-5 grid grid-cols-1 gap-4 px-2 md:px-6 lg:grid-cols-2'>
+      <div className='mt-5 grid grid-cols-1 gap-4 md:px-6 lg:grid-cols-2'>
         {projects.map((project, index) => (
           <div
             key={index}

@@ -83,6 +83,7 @@ const Socials = () => {
           <ButtonGroup
             button1_text='Cancel'
             button2_text='Save Changes'
+            button2_disabled={JSON.stringify(form) === JSON.stringify(socials)}
             button1_onClick={handleCancel}
             button2_onClick={handleSave}
           />

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import * as React from 'react';
 import { BsArrowLeft } from 'react-icons/bs';
 
@@ -7,7 +8,14 @@ import Seo from '@/components/Seo';
 import Sidebar from '@/components/Sidebar/Sidebar';
 
 export default function EditProfile() {
-  const [active, setActive] = React.useState('Profile');
+  const router = useRouter();
+  const { tab } = router.query;
+  const [active, setActive] = React.useState(tab as string);
+
+  React.useEffect(() => {
+    setActive(tab as string);
+  }, [tab]);
+
   return (
     <>
       <Seo templateTitle='Edit Profile' />

@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 import { BiBook, BiBriefcase, BiLinkAlt, BiUser } from 'react-icons/bi';
 
@@ -14,17 +15,30 @@ const sidebarItems = [
 ];
 
 const Sidebar = ({ active, setActive }: SidebarProps) => {
+  const router = useRouter();
+  const handleClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    item: { name: string }
+  ) => {
+    const tab = item.name.toLowerCase();
+    setActive(tab);
+    router.push(`/edit-profile?tab=${tab}`);
+  };
+
   return (
-    <section className='mt-10 flex w-full flex-col items-start justify-start space-y-10'>
+    <section className='flex w-full flex-col items-start justify-start space-y-8 sm:mt-10 sm:space-y-10'>
       {sidebarItems.map((item, index) => (
         <div key={index} className='flex w-full items-center'>
+          <div
+            className={`h-8 rounded-full bg-black ${
+              active === item.name.toLowerCase() ? 'w-0.5' : 'w-0'
+            }`}
+          />
           <button
             key={index}
-            onClick={() => setActive(item.name)}
-            className={`flex items-center pl-4 text-sm md:text-lg ${
-              active === item.name
-                ? 'border-l-2 border-solid border-black font-semibold'
-                : ''
+            onClick={(e) => handleClick(e, item)}
+            className={`flex items-center pl-4 text-sm md:text-lg lg:text-xl ${
+              active === item.name.toLowerCase() ? 'font-semibold' : ''
             }`}
           >
             <p>{item.icon}</p>

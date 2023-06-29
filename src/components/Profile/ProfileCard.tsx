@@ -20,7 +20,7 @@ const ProfileCard = ({ view }: { view: string }) => {
     <div className='mt-10 rounded-lg border border-solid pb-10'>
       <div className='gradient relative flex h-48 w-full rounded-t-lg'>
         <Link
-          href='/edit-profile'
+          href='/edit-profile?tab=profile'
           className='shadown-sm absolute right-5 top-5 flex items-center rounded-lg bg-gray-300 bg-opacity-30 px-4 py-2 font-semibold text-white hover:bg-opacity-50'
         >
           <BiEdit className='mr-2 text-lg' />
@@ -93,32 +93,32 @@ const ProfileCard = ({ view }: { view: string }) => {
             <div className='flex items-center space-x-4'>
               {socials.githubUrl && (
                 <Link href={socials.githubUrl}>
-                  <AiOutlineGithub className='h-8 w-8 rounded-lg border border-solid p-1 md:h-10 md:w-10' />
+                  <AiOutlineGithub className='h-8 w-8 rounded-lg border border-solid p-1 hover:bg-gray-100 md:h-10 md:w-10' />
                 </Link>
               )}
               {socials.linkedinUrl && (
                 <Link href={socials.linkedinUrl}>
-                  <AiFillLinkedin className='h-8 w-8 rounded-lg border border-solid p-1 text-blue-800 md:h-10 md:w-10' />
+                  <AiFillLinkedin className='h-8 w-8 rounded-lg border border-solid p-1 text-blue-800 hover:bg-gray-100 md:h-10 md:w-10' />
                 </Link>
               )}
               {socials.facebookUrl && (
                 <Link href={socials.facebookUrl}>
-                  <BsFacebook className='h-8 w-8 rounded-lg border border-solid p-1.5 text-blue-500 md:h-10 md:w-10' />
+                  <BsFacebook className='h-8 w-8 rounded-lg border border-solid p-1.5 text-blue-500 hover:bg-gray-100 md:h-10 md:w-10' />
                 </Link>
               )}
               {socials.instagramUrl && (
                 <Link href={socials.instagramUrl}>
-                  <AiOutlineInstagram className='h-8 w-8 rounded-lg border border-solid p-1 text-pink-600 md:h-10 md:w-10' />
+                  <AiOutlineInstagram className='h-8 w-8 rounded-lg border border-solid p-1 text-pink-600 hover:bg-gray-100 md:h-10 md:w-10' />
                 </Link>
               )}
               {socials.dribbbleUrl && (
                 <Link href={socials.dribbbleUrl}>
-                  <AiOutlineDribbble className='h-8 w-8 rounded-lg border border-solid p-1 text-pink-800 md:h-10 md:w-10' />
+                  <AiOutlineDribbble className='h-8 w-8 rounded-lg border border-solid p-1 text-pink-800 hover:bg-gray-100 md:h-10 md:w-10' />
                 </Link>
               )}
               {socials.behanceUrl && (
                 <Link href={socials.behanceUrl}>
-                  <AiOutlineBehanceSquare className='h-8 w-8 rounded-lg border border-solid p-1 text-blue-700 md:h-10 md:w-10' />
+                  <AiOutlineBehanceSquare className='h-8 w-8 rounded-lg border border-solid p-1 text-blue-700 hover:bg-gray-100 md:h-10 md:w-10' />
                 </Link>
               )}
             </div>
