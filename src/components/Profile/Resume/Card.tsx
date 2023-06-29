@@ -45,7 +45,7 @@ const Card = ({
         {desc && (
           <p className='mt-4 text-base text-gray-500 md:text-lg'>{desc}</p>
         )}
-        {responsibilities && (
+        {responsibilities && responsibilities.length > 0 && (
           <div className=''>
             <h4 className='mt-4 text-base md:text-lg'>Job responsibilities:</h4>
             <ul className='list-inside list-disc text-base text-gray-500 md:text-lg'>

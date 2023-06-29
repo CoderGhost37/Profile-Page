@@ -4,7 +4,9 @@ import { AiOutlinePlus } from 'react-icons/ai';
 
 import ButtonGroup from '@/components/ButtonGroup';
 import Card from '@/components/EditProfile/Card';
-import MultiFieldInput from '@/components/MultiFieldInput';
+import Modal from '@/components/Modal/Modal';
+import EducationModal from '@/components/Modal/ModalTypes/EducationModal';
+import WorkExperienceModal from '@/components/Modal/ModalTypes/WorkExperienceModal';
 import MultiTagInput from '@/components/MultiTagInput';
 
 import { Education, WorkExperience } from '@/constant/data';
@@ -16,6 +18,25 @@ const Resume = () => {
   const [tags, setTags] = React.useState<string[]>(resume.interests);
   const [addEducation, setAddEducation] = React.useState(false);
   const [addWorkExperience, setAddWorkExperience] = React.useState(false);
+  const [errMsg, setErrMsg] = React.useState('');
+  const [eduErrMsg, setEduErrMsg] = React.useState('');
+  const [fields, setFields] = React.useState<WorkExperience>({
+    icon: '',
+    name: '',
+    location: '',
+    company: '',
+    duration: '',
+    desc: '',
+    responsibilities: [],
+  });
+  const [eduFields, setEduFields] = React.useState<Education>({
+    img: '',
+    name: '',
+    location: '',
+    degree: '',
+    duration: '',
+    desc: '',
+  });
 
   const onDeleteEducation = (index: number) => {
     const newEducation = [...form.education];
@@ -35,15 +56,28 @@ const Resume = () => {
     });
   };
 
-  const onSaveEducation = (fields: Education) => {
+  const onSaveEducation = () => {
+    if (
+      !eduFields.img ||
+      !eduFields.name ||
+      !eduFields.location ||
+      !eduFields.duration
+    ) {
+      setEduErrMsg('Please fill all the required fields');
+      return;
+    }
     setForm({
       ...form,
-      education: [fields, ...form.education],
+      education: [eduFields, ...form.education],
     });
     setAddEducation(false);
   };
 
-  const onSaveWorkExp = (fields: WorkExperience) => {
+  const onSaveWorkExp = () => {
+    if (!fields.icon || !fields.name || !fields.company || !fields.duration) {
+      setErrMsg('Please fill all the required fields');
+      return;
+    }
     setForm({
       ...form,
       workExp: [fields, ...form.workExp],
@@ -73,7 +107,7 @@ const Resume = () => {
             name='about'
             id='about'
             rows={7}
-            className='mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-300 focus:outline-none md:text-lg'
+            className='mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:border-blue-300 focus:outline-none sm:text-base md:text-lg'
             placeholder='Enter about yourself'
             value={form.about}
             onChange={() =>
@@ -98,16 +132,20 @@ const Resume = () => {
             )}
           </div>
           {addWorkExperience && (
-            <MultiFieldInput
-              type='Work Experience'
-              handleClose={() => setAddWorkExperience(false)}
-              handleSaveWorkExp={(fields: WorkExperience) =>
-                onSaveWorkExp(fields)
-              }
-              handleSaveEducation={(fields: Education) =>
-                onSaveEducation(fields)
-              }
-            />
+            <div className='h-full'>
+              <Modal
+                title='Add Work Experience'
+                handleClose={() => setAddWorkExperience(false)}
+                handleSave={onSaveWorkExp}
+                Body={
+                  <WorkExperienceModal
+                    fields={fields}
+                    setFields={setFields}
+                    errMsg={errMsg}
+                  />
+                }
+              />
+            </div>
           )}
           {form.workExp.map((item, index) => (
             <Card
@@ -130,16 +168,20 @@ const Resume = () => {
             )}
           </div>
           {addEducation && (
-            <MultiFieldInput
-              type='Education'
-              handleClose={() => setAddEducation(false)}
-              handleSaveWorkExp={(fields: WorkExperience) =>
-                onSaveWorkExp(fields)
-              }
-              handleSaveEducation={(fields: Education) =>
-                onSaveEducation(fields)
-              }
-            />
+            <div className='h-full'>
+              <Modal
+                title='Add Education'
+                handleClose={() => setAddEducation(false)}
+                handleSave={onSaveEducation}
+                Body={
+                  <EducationModal
+                    fields={eduFields}
+                    setFields={setEduFields}
+                    errMsg={eduErrMsg}
+                  />
+                }
+              />
+            </div>
           )}
           {form.education.map((item, index) => (
             <Card

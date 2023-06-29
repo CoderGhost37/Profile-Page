@@ -17,7 +17,7 @@ import { SiMongodb } from 'react-icons/si';
 import { TbBrandJavascript, TbBrandNextjs } from 'react-icons/tb';
 
 const image = (icon: string) => {
-  if (icon.startsWith('http'))
+  if (icon.startsWith('http') || icon.startsWith('data:image'))
     // eslint-disable-next-line @next/next/no-img-element
     return <img src={icon} alt={icon} width={45} height={45} />;
   switch (icon) {

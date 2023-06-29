@@ -4,6 +4,8 @@ import { BiChevronDown } from 'react-icons/bi';
 
 import ButtonGroup from '@/components/ButtonGroup';
 import Input from '@/components/Input';
+import Modal from '@/components/Modal/Modal';
+import UploadPictureModal from '@/components/Modal/ModalTypes/UploadPictureModal';
 import ToggleInput from '@/components/ToggleInput';
 
 import { useProfile } from '@/context/ProfileContext';
@@ -18,15 +20,6 @@ const Profile = () => {
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
-  };
-
-  const handleDeleteImg = () => {
-    setOpenProfilePicInput(false);
-    setForm({ ...form, profilePic: '/images/user.png' });
-  };
-
-  const handleUploadImg = () => {
-    setOpenProfilePicInput(true);
   };
 
   const handleCancel = () => {
@@ -52,26 +45,24 @@ const Profile = () => {
             classStyles='ml-5 flex-col flex-col-reverse sm:flex-row-reverse'
             button1_text='Delete'
             button2_text='Upload new picture'
-            button1_onClick={handleDeleteImg}
-            button2_onClick={handleUploadImg}
+            button1_onClick={() =>
+              setForm({ ...form, profilePic: '/images/user.png' })
+            }
+            button2_onClick={() => setOpenProfilePicInput(true)}
           />
         </div>
         {openProfilePicInput && (
-          <div className='w-full'>
-            <Input
-              label='Profile Picture URL'
-              name='profilePic'
-              type='text'
-              placeholder='Enter your profile picture URL'
-              value={profilePicUrl}
-              handleChange={(e) => setProfilePicUrl(e.target.value)}
-            />
-            <ButtonGroup
-              classStyles='justify-end'
-              button1_text='Cancel'
-              button2_text='Save'
-              button1_onClick={() => setOpenProfilePicInput(false)}
-              button2_onClick={() => {
+          <div className='h-full'>
+            <Modal
+              title='Change profile picture'
+              Body={
+                <UploadPictureModal
+                  profilePicUrl={profilePicUrl}
+                  setProfilePicUrl={setProfilePicUrl}
+                />
+              }
+              handleClose={() => setOpenProfilePicInput(false)}
+              handleSave={() => {
                 setForm({ ...form, profilePic: profilePicUrl });
                 setOpenProfilePicInput(false);
               }}

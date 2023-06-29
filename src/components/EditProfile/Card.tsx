@@ -53,8 +53,10 @@ const Card = ({
           </div>
           <h5 className='text-sm font-semibold'>{duration}</h5>
         </div>
-        {desc && <p className='mt-2 text-base text-gray-500'>{desc}</p>}
-        {responsibilities && (
+        {desc && (
+          <p className='mt-2 text-sm text-gray-500 md:text-base'>{desc}</p>
+        )}
+        {responsibilities && responsibilities.length > 0 && (
           <div className=''>
             <h4 className='mt-2 text-base'>Job responsibilities:</h4>
             <ul className='list-inside list-disc text-base text-gray-500'>
